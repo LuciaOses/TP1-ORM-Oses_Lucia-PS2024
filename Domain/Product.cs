@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Retail.Domain
 {
@@ -32,8 +27,10 @@ namespace Retail.Domain
         public string ImageUrl { get; set; } = string.Empty;
 
         //Relaciones Tabla
-        [Required]
-        public ICollection<SaleProduct> VentaProductos { get; set; } = new List<SaleProduct>();
-        public Category Categoria { get; set; } = new Category();
+        public virtual ICollection<SaleProduct> VentaProductos { get; set; }
+
+        public virtual Category Categoria { get; set; } // Propiedad de navegación a la categoría
+
+        
     }
 }

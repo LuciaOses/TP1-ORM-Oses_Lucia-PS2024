@@ -16,7 +16,6 @@ namespace Retail.Domain
         public string Name { get; set; } = string.Empty;
 
         //Relaciones Tabla
-        [Required]
-        public ICollection<Product> Productos { get; set; } = new List<Product>();
+        public virtual ICollection<Product>? Productos { get; set; }
     }
 }

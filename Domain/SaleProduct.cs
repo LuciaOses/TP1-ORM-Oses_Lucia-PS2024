@@ -28,8 +28,8 @@ namespace Retail.Domain
         public int Discount{ get; set; }
 
         //Relaciones Tabla
-        public Sale Venta { get; set; } = new Sale();
-        public Product Producto { get; set; } = new Product();
+        public virtual Sale Venta { get; set; }
+        public virtual Product Producto { get; set; }
 
 
 }

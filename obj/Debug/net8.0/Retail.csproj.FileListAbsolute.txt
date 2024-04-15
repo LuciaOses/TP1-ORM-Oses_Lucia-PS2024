@@ -500,3 +500,4 @@ C:\Users\lucia\Desktop\TP1-ORM-Osés_Lucia Irene\Retail\Retail\obj\Debug\net8.0\
 C:\Users\lucia\Desktop\TP1-ORM-Osés_Lucia Irene\Retail\Retail\obj\Debug\net8.0\Retail.pdb
 C:\Users\lucia\Desktop\TP1-ORM-Osés_Lucia Irene\Retail\Retail\obj\Debug\net8.0\Retail.genruntimeconfig.cache
 C:\Users\lucia\Desktop\TP1-ORM-Osés_Lucia Irene\Retail\Retail\obj\Debug\net8.0\ref\Retail.dll
+C:\Users\lucia\Desktop\TP1-ORM-Osés_Lucia Irene\Retail\Retail\obj\Debug\net8.0\Retail.sourcelink.json
