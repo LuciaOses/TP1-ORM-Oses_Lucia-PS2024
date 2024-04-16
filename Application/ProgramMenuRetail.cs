@@ -1,9 +1,12 @@
 ﻿using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 using System;
+using Retail.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Humanizer;
+using Retail.Application.Services;
 
 namespace Retail.Application
 {
@@ -77,22 +80,25 @@ namespace Retail.Application
 
     public class MenuHandler
     {
-        private readonly ProductService _productService;
-        private readonly SaleService _saleService;
-
-        public MenuHandler()
-        {
-            _productService = new ProductService();
-            _saleService = new SaleService();
-        }
 
         public void ListProduct()
         {
-            Console.WriteLine("Listar Producto");
+            // Supongamos que RetailContext es tu contexto de base de datos
+            var dbContext = new RetailContext();
+            var productService = new ServiceProducto(dbContext);
+
+            int indice = 1;
+            Console.WriteLine("Listar Productos");
+            
+
+            // Lógica para listar productos utilizando el servicio ProductService
+            foreach (var productoItem in productService.GetAll())
+            {
+                Console.WriteLine("| " + indice + ". " + productoItem.Name + " / $" + productoItem.Price);
+                indice++;
+            }
             Console.WriteLine("Presione enter para continuar.");
             Console.ReadLine();
-            
-            // Lógica para registrar un producto utilizando el servicio ProductService
         }
 
         public void RegisterSale()
@@ -104,7 +110,7 @@ namespace Retail.Application
         }
     }
 
-    public class ProductService
+    /*public class ProductService
     {
         private readonly ProductRepository _productRepository;
 
@@ -136,6 +142,6 @@ namespace Retail.Application
     public class SaleRepository
     {
         // Implementación de métodos de persistencia para ventas utilizando un ORM
-    }
+    }*/
 }
 

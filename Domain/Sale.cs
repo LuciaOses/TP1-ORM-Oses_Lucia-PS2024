@@ -31,7 +31,6 @@ namespace Retail.Domain
         public DateTime Date { get; set; } = DateTime.Now;
 
         // Relaciones Tablas
-        [Required]
-        public ICollection<SaleProduct> VentaProductos { get; set; } = new List<SaleProduct>();
+        public virtual ICollection<SaleProduct>? VentaProductos { get; set; }
     }
 }

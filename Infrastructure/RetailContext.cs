@@ -77,9 +77,8 @@ namespace Retail.Infrastructure
                     new Category { CategoryId = 9, Name = "Libros y Material Educativo" },
                     new Category { CategoryId = 10, Name = "Jardinería y Bricolaje" });
 
-            //Cargar productos automáticamente
+            //Cargar productos automáticamente - 40 productos con datos verídicos
             modelBuilder.Entity<Product>().HasData(
-            // 40 productos con datos verídicos
 
             new Product
             {
@@ -130,7 +129,7 @@ namespace Retail.Infrastructure
                 Description = "128GB Azul",
                 Price = 350000.00m,
                 Category= 2, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/332a2d22382f714d26253b62446af895.png.webp"
             },
             new Product
@@ -140,7 +139,7 @@ namespace Retail.Infrastructure
                 Description = "5G 256GB Graphite",
                 Price = 840000.00m,
                 Category= 2, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/332a2d22382f714d26253b62446af895.png.webp"
             },
             new Product
@@ -150,7 +149,7 @@ namespace Retail.Infrastructure
                 Description = "1 TB Carbon Black",
                 Price = 1050000.00m,
                 Category= 2, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/bb99d78e3f2bffdc9ac01d6d4cc46761.jpg.webp"
             },
             new Product
@@ -160,7 +159,7 @@ namespace Retail.Infrastructure
                 Description = "14” Intel Celeron 4GB 256GB SSD 14-DQ0515LA",
                 Price = 500000.00m,
                 Category= 2, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/332a2d22382f714d26253b62446af895.png.webp"
             },
             new Product
@@ -170,7 +169,7 @@ namespace Retail.Infrastructure
                 Description = "Malla Metal Rosa",
                 Price = 35000.00m,
                 Category= 3, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/480b83219a6b568d223a684bc320077c.jpg.webp"
             },
             new Product
@@ -180,7 +179,7 @@ namespace Retail.Infrastructure
                 Description = "Sumergible negro",
                 Price = 38560.00m,
                 Category= 3, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/d3e720120971297c2af0c5e6a4d7c21d.jpg.webp"
             },
             new Product
@@ -190,7 +189,7 @@ namespace Retail.Infrastructure
                 Description = "TWS W-1 Black AYV0125, Rosa duracion bateria 4hs",
                 Price = 7900.00m,
                 Category= 3, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/de17587debfa3603efd00fc8b5211a02.jpg.webp"
             },
             new Product
@@ -210,7 +209,7 @@ namespace Retail.Infrastructure
                 Description = "190 x 140 cm",
                 Price = 295000.00m,
                 Category= 4, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/1feb1913552f204a9f996da857073ff8.jpg.webp"
             },
             new Product
@@ -220,7 +219,7 @@ namespace Retail.Infrastructure
                 Description = "12 box de guardado de 28 x 28 - 4 cajones 59 ancho x 36 profundidad x 16 alto - Sector Colgado 171,5 x 56",
                 Price = 284731.00m,
                 Category= 4, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/dad338848c2a997aaa0b0d151d5995e2.png.webp"
             },
             new Product
@@ -240,7 +239,7 @@ namespace Retail.Infrastructure
                 Description = "3 Cuerpos De Chenille Gris Oscuro Full Confort",
                 Price = 488210.00m,
                 Category= 4, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/2cd28c520d9b3fc4213e84615c348155.jpg.webp"
             },
             new Product
@@ -270,7 +269,7 @@ namespace Retail.Infrastructure
                 Description = "Esta garantiza un secado y curado veloz gracias a sus 80w y 36 luces LED.",
                 Price = 21600.00m,
                 Category= 5, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/02e234f30d04bf0624f6ec2cc28a1c82.jpg.webp"
             },
             new Product
@@ -280,7 +279,7 @@ namespace Retail.Infrastructure
                 Description = " COLORES BLANCA Y ROSA",
                 Price = 9600.00m,
                 Category= 5, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/acb620d996dd7c6d0b6404770b2c669c.jpg.webp"
             },
             new Product
@@ -290,7 +289,7 @@ namespace Retail.Infrastructure
                 Description = "Mancuernas 25kg 47cm de largo, barra extensora 8 Discos de 1.25Kg ",
                 Price = 9600.00m,
                 Category= 6, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/49e2a4bd8a16dfe0681e5d78f7d83726.jpg.webp"
             },
             new Product
@@ -310,7 +309,7 @@ namespace Retail.Infrastructure
                 Description = "Mancuernas 25kg 47cm de largo",
                 Price = 130000.00m,
                 Category= 6, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/061c85fd9c81ccda6359407d911a9ed9.jpg.webp"
             },
             new Product
@@ -320,7 +319,7 @@ namespace Retail.Infrastructure
                 Description = "La PVC Yoga Mat para yoga está hecha de PVC espumado.",
                 Price = 9100.00m,
                 Category= 6, // Asignar la categoría usando la enumeración
-                Discount = 10,
+                Discount = 0,
                 ImageUrl = "https://images.fravega.com/f300/d5adca919b008c4c12448963d74d61f4.jpg.webp"
             },
             new Product
@@ -340,7 +339,7 @@ namespace Retail.Infrastructure
                  Description = "Edad recomendada: +3 años",
                  Price = 34482.00m,
                  Category= 7, // Asignar la categoría usando la enumeración
-                 Discount = 10,
+                 Discount = 0,
                  ImageUrl = "https://images.fravega.com/f300/31428ce9faa9608dc8f43daaf50fc299.jpg.webp"
              },
               new Product
@@ -350,7 +349,7 @@ namespace Retail.Infrastructure
                   Description = "Estimula el pensamiento constructivo, espacial y abstracto.",
                   Price = 24011.00m,
                   Category= 7, // Asignar la categoría usando la enumeración
-                  Discount = 10,
+                  Discount = 0,
                   ImageUrl = "https://images.fravega.com/f300/d5adca919b008c4c12448963d74d61f4.jpg.webp"
               },
                new Product
@@ -370,7 +369,7 @@ namespace Retail.Infrastructure
                    Description = "100% yerba mate (ilex paraguariensis)",
                    Price = 4845.00m,
                    Category= 8, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://jumboargentina.vtexassets.com/arquivos/ids/711224-800-auto?v=637938633804770000&width=800&height=auto&aspect=true"
                },
                new Product
@@ -380,7 +379,7 @@ namespace Retail.Infrastructure
                    Description = "172 Gr Harina de trigo 000, hierro, ácido fólico, tiamina (b1), riboflavina (b2), niacina, azúcar, emu ins 442",
                    Price = 1350.00m,
                    Category= 8, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://jumboargentina.vtexassets.com/arquivos/ids/791393-800-auto?v=638288337779830000&width=800&height=auto&aspect=true"
                },
                new Product
@@ -390,7 +389,7 @@ namespace Retail.Infrastructure
                    Description = "Aguas Minerales sin Gas",
                    Price = 850.00m,
                    Category= 8, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://jumboargentina.vtexassets.com/arquivos/ids/619126-800-auto?v=637457162754830000&width=800&height=auto&aspect=true"
                },
                new Product
@@ -410,7 +409,7 @@ namespace Retail.Infrastructure
                    Description = "ESPIRAL A4 X 80 RAY.",
                    Price = 3700.50m,
                    Category= 9, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://tiotomar.vtexassets.com/arquivos/ids/170536-800-800?v=637937572304970000&width=800&height=800&aspect=true"
                },
                new Product
@@ -420,7 +419,7 @@ namespace Retail.Infrastructure
                    Description = "N.5 COLOR X 24 H.",
                    Price = 3990.50m,
                    Category= 9, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://tiotomar.vtexassets.com/arquivos/ids/226689-800-800?v=638423970202100000&width=800&height=800&aspect=true"
                },
                new Product
@@ -430,7 +429,7 @@ namespace Retail.Infrastructure
                    Description = "Cuerpo de resina plastica. No se astilla al sacarle punta",
                    Price = 1890.50m,
                    Category= 9, // Asignar la categoría usando la enumeración
-                   Discount = 9,
+                   Discount = 0,
                    ImageUrl = "https://tiotomar.vtexassets.com/arquivos/ids/167138-800-800?v=637937554688800000&width=800&height=800&aspect=true"
                },
                new Product
@@ -440,7 +439,7 @@ namespace Retail.Infrastructure
                    Description = "12 U Los nuevos colores SuperSoft tienen colores mucho mas vivos y ecologicos",
                    Price = 14900.50m,
                    Category= 9, // Asignar la categoría usando la enumeración
-                   Discount = 9,
+                   Discount = 10,
                    ImageUrl = "https://tiotomar.vtexassets.com/arquivos/ids/173873-800-800?v=637937587983730000&width=800&height=800&aspect=true"
                },
                new Product
@@ -450,7 +449,7 @@ namespace Retail.Infrastructure
                    Description = "8 piezas livianas y fabricadas con materiales de alta calidad",
                    Price = 65956.00m,
                    Category= 10, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://images.fravega.com/f300/21cb40b3ef663bd75715a2aea63e7843.jpg.webp"
                },
                new Product
@@ -460,7 +459,7 @@ namespace Retail.Infrastructure
                    Description = "Hechas de metal y plástico resistentes",
                    Price = 33000.00m,
                    Category= 10, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://images.fravega.com/f300/6e80c3f28a89404ee55a5da927d97546.jpg.webp"
                },
                new Product
@@ -480,7 +479,7 @@ namespace Retail.Infrastructure
                    Description = "Incluye: Pistola, manguera de 5 m, dispensador de detergente integrado. 2000 W",
                    Price = 220000.00m,
                    Category= 10, // Asignar la categoría usando la enumeración
-                   Discount = 10,
+                   Discount = 0,
                    ImageUrl = "https://images.fravega.com/f300/479643aca88b3f806fe312f688512467.jpg.webp"
                });
 

@@ -27,9 +27,8 @@ namespace Retail.Domain
         public string ImageUrl { get; set; } = string.Empty;
 
         //Relaciones Tabla
-        public virtual ICollection<SaleProduct> VentaProductos { get; set; }
-
-        public virtual Category Categoria { get; set; } // Propiedad de navegación a la categoría
+        public virtual ICollection<SaleProduct>? VentaProductos { get; set; }
+        public virtual Category? Categoria { get; set; } // Propiedad de navegación a la categoría
 
         
     }
