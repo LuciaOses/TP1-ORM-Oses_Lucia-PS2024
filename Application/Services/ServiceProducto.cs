@@ -49,19 +49,6 @@ namespace Retail.Application.Services
             throw new NotImplementedException();
         }
 
-        /*public void ListaProductos()
-        {
-            using (var pro = new RetailContext())
-                List<Product> productos = (from p in pro.Product where p.Price > 0 select p).OrderBy(p => p.Name).ToList();
-            if (libros.Count == 0)
-            {
-                Console.WriteLine("No hay ejemplares para alquilar.");
-                return;
-            }
-            foreach (var libro in libros)
-            {
-                Console.WriteLine("Titulo: " + libro.Titulo + " " + "Autor: " + libro.Autor + " " + "ISBN: " + " " + libro.ISBN);
-            }*/
         }
 }
 

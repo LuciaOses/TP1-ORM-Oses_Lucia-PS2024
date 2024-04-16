@@ -109,39 +109,5 @@ namespace Retail.Application
             // Lógica para registrar una venta utilizando el servicio SaleService
         }
     }
-
-    /*public class ProductService
-    {
-        private readonly ProductRepository _productRepository;
-
-        public ProductService()
-        {
-            _productRepository = new ProductRepository();
-        }
-
-        // Métodos para operaciones relacionadas con productos
-    }
-
-    public class SaleService
-    {
-        private readonly SaleRepository _saleRepository;
-
-        public SaleService()
-        {
-            _saleRepository = new SaleRepository();
-        }
-
-        // Métodos para operaciones relacionadas con ventas
-    }
-
-    public class ProductRepository
-    {
-        // Implementación de métodos de persistencia para productos utilizando un ORM
-    }
-
-    public class SaleRepository
-    {
-        // Implementación de métodos de persistencia para ventas utilizando un ORM
-    }*/
 }
 
