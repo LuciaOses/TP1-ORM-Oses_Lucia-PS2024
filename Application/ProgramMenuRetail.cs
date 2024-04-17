@@ -1,12 +1,8 @@
-﻿using Microsoft.VisualStudio.Web.CodeGeneration.Design;
-using System;
-using Retail.Infrastructure;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Humanizer;
 using Retail.Application.Services;
+using Retail.Domain;
+using Retail.Infrastructure;
 
 namespace Retail.Application
 {
@@ -21,7 +17,9 @@ namespace Retail.Application
 
         static void Main(string[] args)
         {
-            var menuHandler = new MenuHandler();
+            var dbContext = new RetailContext(); // Crear el contexto de la base de datos
+            var productService = new ServiceProducto(dbContext);
+            var menuHandler = new MenuHandler(productService); // Inyectar dependencia del servicio
             var program = new ProgramMenuRetail(menuHandler);
             program.MenuRetail();
         }
@@ -80,19 +78,21 @@ namespace Retail.Application
 
     public class MenuHandler
     {
+        private readonly ServiceProducto _productService;
+        private List<Product> products;
+
+        public MenuHandler(ServiceProducto productService)
+        {
+            _productService = productService;
+            products = _productService.GetAll();
+        }
 
         public void ListProduct()
         {
-            // Supongamos que RetailContext es tu contexto de base de datos
-            var dbContext = new RetailContext();
-            var productService = new ServiceProducto(dbContext);
-
             int indice = 1;
             Console.WriteLine("Listar Productos");
-            
 
-            // Lógica para listar productos utilizando el servicio ProductService
-            foreach (var productoItem in productService.GetAll())
+            foreach (var productoItem in products)
             {
                 Console.WriteLine("| " + indice + ". " + productoItem.Name + " / $" + productoItem.Price);
                 indice++;
@@ -103,11 +103,87 @@ namespace Retail.Application
 
         public void RegisterSale()
         {
-            Console.WriteLine("Registrar Venta");
-            Console.WriteLine("Presione enter para continuar.");
-            Console.ReadLine();
-            // Lógica para registrar una venta utilizando el servicio SaleService
+            Console.Clear();
+            Console.WriteLine("Seleccione Producto de Compra:");
+
+            if (products == null || products.Count == 0)
+            {
+                Console.WriteLine("No hay productos disponibles para la venta.");
+                Console.WriteLine("Presione enter para volver al menú principal.");
+                Console.ReadLine();
+                return;
+            }
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {products[i].Name} - Precio: ${products[i].Price} ");
+            }
+
+            List<SaleProduct> selectedSaleProducts = new List<SaleProduct>();
+            bool addProducts = true;
+
+            while (addProducts)
+            {
+                Console.Write("Seleccione un producto por su índice (1-" + products.Count + "): ");
+                if (int.TryParse(Console.ReadLine(), out int index) && index >= 1 && index <= products.Count)
+                {
+                    var selectedProduct = products[index - 1];
+                    var saleProduct = new SaleProduct
+                    {
+                        Product = selectedProduct.ProductId,
+                        Quantity = 1,
+                        Price = selectedProduct.Price,
+                        Discount = selectedProduct.Discount,
+                        Venta = null,
+                        Producto = null,
+                    };
+                    selectedSaleProducts.Add(saleProduct);
+                }
+                else
+                {
+                    Console.WriteLine("Índice inválido. Intente de nuevo.");
+                }
+
+                Console.Write("¿Desea agregar otro producto? (S/N): ");
+                addProducts = Console.ReadLine().Trim().ToUpper() == "S";
+            }
+
+            CalculateAndPrintSaleDetails(selectedSaleProducts);
+        }
+
+        public void CalculateAndPrintSaleDetails(List<SaleProduct> selectedSaleProducts)
+        {
+            try
+            {
+                decimal subtotal = selectedSaleProducts.Sum(s => s.Quantity * s.Price);
+                decimal totalDiscount = selectedSaleProducts.Sum(s => s.Price * s.Discount / 100);
+                decimal taxes = 1.21m; // IVA del 21%
+                decimal totalPayment = (subtotal - totalDiscount) * taxes;
+
+                Console.WriteLine("Detalle de la Venta:");
+                Console.WriteLine("-------------------");
+
+                foreach (var saleProduct in selectedSaleProducts)
+                {
+                    Console.WriteLine($"Producto: {saleProduct.Product}- Cantidad: {saleProduct.Quantity} - Precio Unitario: ${saleProduct.Price} - Descuento: %{saleProduct.Discount}");
+                }
+
+                Console.WriteLine($"Subtotal: ${subtotal}");
+                Console.WriteLine($"Descuento Total: % {totalDiscount}");
+                Console.WriteLine($"Total de Pago: ${totalPayment}");
+
+                Console.WriteLine("Presione enter para continuar.");
+                Console.ReadLine();
+                Console.WriteLine("Venta registrada correctamente.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al registrar la venta: {ex.Message}");
+                Console.WriteLine("Presione enter para continuar.");
+                Console.ReadLine();
+            }
         }
     }
 }
+
 
