@@ -79,7 +79,7 @@ namespace Retail.Application
     public class MenuHandler
     {
         private readonly ServiceProducto _productService;
-        private List<Product> products;
+        private readonly List<Product> products;
 
         public MenuHandler(ServiceProducto productService)
         {
@@ -134,8 +134,6 @@ namespace Retail.Application
                         Quantity = 1,
                         Price = selectedProduct.Price,
                         Discount = selectedProduct.Discount,
-                        Venta = null,
-                        Producto = null,
                     };
                     selectedSaleProducts.Add(saleProduct);
                 }
@@ -148,33 +146,41 @@ namespace Retail.Application
                 addProducts = Console.ReadLine().Trim().ToUpper() == "S";
             }
 
-            CalculateAndPrintSaleDetails(selectedSaleProducts);
+            PrintSaleDetails(selectedSaleProducts);
         }
 
-        public void CalculateAndPrintSaleDetails(List<SaleProduct> selectedSaleProducts)
+        public static void PrintSaleDetails(List<SaleProduct> selectedSaleProducts)
         {
             try
             {
-                decimal subtotal = selectedSaleProducts.Sum(s => s.Quantity * s.Price);
-                decimal totalDiscount = selectedSaleProducts.Sum(s => s.Price * s.Discount / 100);
+                decimal subtotal = CalculateSubtotal(selectedSaleProducts);
+                decimal totalDiscount = CalculateTotalDiscount(selectedSaleProducts);
                 decimal taxes = 1.21m; // IVA del 21%
                 decimal totalPayment = (subtotal - totalDiscount) * taxes;
 
                 Console.WriteLine("Detalle de la Venta:");
-                Console.WriteLine("-------------------");
+                Console.WriteLine("--------------------");
 
                 foreach (var saleProduct in selectedSaleProducts)
                 {
-                    Console.WriteLine($"Producto: {saleProduct.Product}- Cantidad: {saleProduct.Quantity} - Precio Unitario: ${saleProduct.Price} - Descuento: %{saleProduct.Discount}");
+
+                    Console.WriteLine($"Producto: {saleProduct.Product} - Cantidad: {saleProduct.Quantity} - Precio Unitario: ${saleProduct.Price} - Descuento: %{saleProduct.Discount}");
                 }
 
                 Console.WriteLine($"Subtotal: ${subtotal}");
-                Console.WriteLine($"Descuento Total: % {totalDiscount}");
+                Console.WriteLine($"Descuento Total: $ {totalDiscount}");
                 Console.WriteLine($"Total de Pago: ${totalPayment}");
 
+                Console.WriteLine("-------------------");
+                Console.WriteLine("Venta registrada correctamente.");
                 Console.WriteLine("Presione enter para continuar.");
                 Console.ReadLine();
-                Console.WriteLine("Venta registrada correctamente.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"Error al calcular el detalle de la venta: {ex.Message}");
+                Console.WriteLine("Presione enter para continuar.");
+                Console.ReadLine();
             }
             catch (Exception ex)
             {
@@ -183,7 +189,15 @@ namespace Retail.Application
                 Console.ReadLine();
             }
         }
+
+        private static decimal CalculateSubtotal(List<SaleProduct> selectedSaleProducts)
+        {
+            return selectedSaleProducts.Sum(s => s.Quantity * s.Price);
+        }
+
+        private static decimal CalculateTotalDiscount(List<SaleProduct> selectedSaleProducts)
+        {
+            return selectedSaleProducts.Sum(s => s.Price * s.Discount / 100);
+        }
     }
 }
-
-
